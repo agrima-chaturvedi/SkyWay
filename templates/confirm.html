@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='airplain.avif') }}");
+            background-size: cover;  /* Ensures the background image covers the entire body */
+            background-position: center center;  /* Centers the image */
+            background-repeat: no-repeat;  /* Prevents repeating the image */
+            height: 100vh;  /* Ensures the body takes the full height of the viewport */
+            margin: 0;
+            padding: 0;
+        }
+
+        .confirmation-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);  /* Semi-transparent background for the box */
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .details p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .pnr {
+            font-weight: bold;
+            font-size: 20px;
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button a {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h2>Booking Confirmed!</h2>
+        <div class="pnr">Your PNR: {{ pnr }}</div>
+
+        <div class="details">
+            <p><strong>Passenger Name:</strong> {{ name }}</p>
+            <p><strong>Date of Travel:</strong> {{ dob }}</p>
+            <p><strong>Airline:</strong> {{ airline }}</p>
+            <p><strong>Route:</strong> {{ source }} → {{ destination }}</p>
+            <p><strong>Departure Time:</strong> {{ dep_time }}</p>
+            <p><strong>Arrival Time:</strong> {{ arr_time }}</p>
+            <p><strong>Duration:</strong> {{ duration }}</p>
+            <p><strong>Stops:</strong> {{ stops }}</p>
+            <p><strong>Total Price:</strong> ₹{{ price }}</p>
+        </div>
+    
+        <div class="back-button">
+            <a href="{{ url_for('home') }}">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+    
+ 
+
+

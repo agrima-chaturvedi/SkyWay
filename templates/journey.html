@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Detail</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+</head>
+<body>
+    <div class="header">
+        <div class="airways">SkyWay</div>
+      </div>
+    <div class="main">
+        <div class="sidepanel">
+            <div class="menu">
+                <ul>
+                  <li><i class="fa-solid fa-house"></i><a href="{{ url_for('home') }}">Home</a></li>
+                  <li><i class="fa-solid fa-ticket"></i><a href="{{ url_for('book') }}">Book Flight</a></li>
+                  <li><i class="fa-solid fa-circle-info"></i><a href="{{ url_for('journey') }}">Journey Details</a></li>
+                  <li><i class="fa-solid fa-ban"></i><a href="{{ url_for('cancel') }}">Cancel Ticket</a></li>
+                  <li><i class="fa-solid fa-calendar-week"></i><a href="{{url_for('flight_details')}}">Flight Details</a></li>
+                 </ul>
+            </div>
+        </div>
+        <div class="journey">
+            <form class="journeydet" action="{{ url_for('journey') }}" method="POST">
+                <h2>Your Journey Details</h2>
+                <div class="grp">
+                   <label for="PNRNumber">PNR Number:</label>
+                   <input type="text" id="PNRNumber" name="PNRNumber" required>
+                </div>
+                
+                <div class="grp">
+                   <label for="PassengerName">Passenger Name:</label>
+                   <input type="text" id="PassengerName" name="PassengerName" required>
+                </div>
+                <button type="submit">Get Details</button>
+               </form>
+               {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% if journey_info %}
+<div class="result">
+    <h3>Journey Found</h3>
+    <p><strong>Name:</strong> {{ journey_info[1] }}</p>
+    <p><strong>From:</strong> {{ journey_info[3] }} — <strong>To:</strong> {{ journey_info[4] }}</p>
+    <p><strong>PNR:</strong> {{ journey_info[2] }}</p>
+</div>
+{% endif %}
+        </div>
+    </div>
+</body>
+</html>

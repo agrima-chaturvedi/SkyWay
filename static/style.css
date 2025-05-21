@@ -1,0 +1,413 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+}
+
+.main {
+  display: flex;
+  height: 100vh;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  position: relative;
+  flex: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Header over the image */
+  .header {
+  position: fixed;
+  top: 8px;
+  left: 356px;
+  width: 76.3%;
+  background-color: #001f3fcc; 
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 1;
+  border-radius: 1rem 1rem 0 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  .airways {
+  margin: 0 auto;  
+  text-align: center;
+}
+
+.logout-button {
+  text-decoration: none;
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
+/* Image takes full size of content area */
+.main-image {
+  margin: 100px;
+  height: 100vh;
+ background-size: cover;
+}
+/*sidepanel*/
+
+.sidepanel{
+    background-color:#003a65;
+    width:340px;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+}
+.sidepanel .menu {
+ color:grey;
+ position: absolute;
+ width: 100%;
+ top:50px;
+}
+.sidepanel .menu li {
+    margin-top: 6px;
+    padding: 14px 20px;
+}
+
+.sidepanel .menu a:hover{
+    box-shadow: 0 0 4px rgba(250,250,250,0.5);
+    opacity: 1;
+}
+.sidepanel a, i {
+    color:white;
+    text-decoration: none;
+    font-size: larger;
+    opacity: 0.75;
+}
+.sidepanel .menu i {
+    padding-right: 8px;
+}
+
+.mainbody{
+    background-color:beige;
+    flex:1;
+    border-radius: 1rem;
+    overflow:auto;    
+}
+.mainbody img{
+    height:100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    background-size: cover;
+}
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* dark transparent background */
+  padding: 40px;
+  border-radius: 1rem;
+  z-index: 2;
+}
+
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.footer {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+.footer .contact{
+    font-weight: 750px;
+    font-size:medium;
+    margin-top: 1.20rem;
+    margin-left: 0.5rem;
+}
+/*book.css*/
+.formbook h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+.formbook {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .formbook:hover {
+    background: #f9f9f9;  /* Lighter background color on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* More intense shadow */
+    transform: translateY(-5px) scale(1.05);  /* Slightly raise and scale the form */
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+  }
+  button {
+    width: 100%;
+    background: #007bff;
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  .grp {
+    margin-bottom: 25px;
+  }
+
+  .book{
+      overflow-y: auto;
+      padding-right: 10px;
+      flex:1;
+      padding:140px 140px 140px 300px;
+      background-image:url("/static/plane.jpeg");
+      background-size:cover ;
+      height: 100vh;
+      width: 100%;
+      margin-left: 0.1rem;
+      background-position: center;
+      position: relative;
+      border-radius: 1rem;
+  }
+
+  /*cancel.css*/
+  .cancelbook h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .cancelbook {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .cancelbook:hover {
+    background: #f9f9f9;  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px) scale(1.05);  
+  }
+  .cancel{
+    flex:1;
+    padding:140px 140px 140px 300px;
+    background-image:url("/static/plane.jpeg");
+    background-size:cover ;
+    height: 100vh;
+    width: 100%;
+    margin-left: 0.1rem;
+    background-position: center;
+    position: relative;
+    border-radius: 1rem;
+}
+/*journey.css*/
+.journeydet h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.journeydet {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+.journey{
+  flex:1;
+  padding:140px 140px 140px 300px;
+  background-image:url("/static/plane.jpeg");
+  background-size:cover ;
+  height: 100vh;
+  width: 100%;
+  margin-left: 0.1rem;
+  background-position: center;
+  position: relative;
+  border-radius: 1rem;
+}
+
+        .chatbox-container {
+            display: none; /* hidden by default */
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 250px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .chatbox-header {
+            background: #021a34;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .chatbox-body {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .chatbox-footer {
+            padding: 10px;
+            display: flex;
+        }
+
+        .chatbox-footer input {
+            flex: 1;
+            padding: 5px;
+        }
+
+        .chatbox-footer button {
+            margin-left: 5px;
+        }
+
+        .message {
+            margin: 5px 0;
+        }
+
+        .user-message {
+            text-align: right;
+            color: rgb(38, 38, 83);
+        }
+
+        .bot-response {
+            text-align: left;
+            color: rgba(1, 2, 9, 0.973);
+        }
+
+        /* Chat icon button */
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #031529;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* Animation keyframes */
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+
+.airplane {
+  position: absolute;
+  bottom: 100px;
+  left: -100px;
+  font-size: 60px;
+  color: white;
+  animation: flyIn 3s ease-out forwards;
+}
+
+@keyframes flyIn {
+  0% {
+      transform: translateX(0) rotate(-20deg);
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      transform: translateX(100vw) rotate(0deg);
+      opacity: 1;
+  }
+}

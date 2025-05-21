@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: black;
+  color: black;
+  height: 100vh;
+  overflow: hidden;
+  margin:0;
+}
+
+.main {
+  display: flex;
+  height: 100vh;
+  background-color: black;
+  overflow: hidden;
+  padding : 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+/* --- Sidepanel --- */
+.sidepanel {
+  background-color: #003a65;
+  width: 280px;
+  border-radius: 1rem;
+  padding: 20px 10px;
+  flex-shrink: 0;
+}
+
+.sidepanel .menu ul {
+  list-style: none;
+}
+
+.sidepanel .menu li {
+  margin-top: 6px;
+  padding: 14px 20px;
+}
+
+.sidepanel .menu a,
+.sidepanel .menu i {
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+  opacity: 0.75;
+}
+
+.sidepanel .menu a:hover {
+  box-shadow: 0 0 4px rgba(250, 250, 250, 0.5);
+  opacity: 1;
+}
+
+.sidepanel .menu i {
+  padding-right: 8px;
+}
+
+/* --- Mainbody --- */
+.mainbody {
+  flex-grow: 1;
+  position: relative;
+  background-color: black;
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image container */
+.mainbody .image-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  overflow: hidden;
+  display: block;
+  z-index: 1;
+}
+
+/* Image */
+.mainbody img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+#journey:target ~ .image-container {
+  display: none;
+}
+
+/* Journey Details */
+.journey-details {
+  position: relative;
+  background: #f4f4f4;
+  border-radius: 1rem;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.journey-details h2 {
+  color: #003a65;
+  margin-bottom: 20px;
+}
+
+/* Card Styles */
+.journey-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.journey-card h3 {
+  color: #003a65;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.journey-card p {
+  margin: 6px 0;
+  color: #333;
+}
+.journey-card strong {
+  color: #003a65;
+}

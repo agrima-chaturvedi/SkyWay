@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Airline Booking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <i class="fas fa-plane airplane"></i>
+  <div class="header">
+    <div class="airways">SkyWay</div>
+    <a href="{{url_for('login')}}" class="logout-button">Logout</a>
+</div>
+  <div class="main">
+    <div class="sidepanel">
+      <div class="menu">
+        <ul>
+          <li><i class="fa-solid fa-house"></i><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><i class="fa-solid fa-ticket"></i><a href="{{ url_for('book') }}">Book Flight</a></li>
+                    <li><i class="fa-solid fa-circle-info"></i><a href="{{ url_for('journey') }}">Journey Details</a></li>
+                    <li><i class="fa-solid fa-ban"></i><a href="{{ url_for('cancel') }}">Cancel Ticket</a></li>
+                    <li><i class="fa-solid fa-calendar-week"></i><a href="{{ url_for('flight_details')}}">Flight Details</a></li>
+          
+        </ul>
+      </div>
+    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Management System</title>
+        
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Widget</title>
+    
+</head>
+<body>
+
+    <!-- Chat icon -->
+    <button class="chat-icon" onclick="toggleChatbox()">💬</button>
+
+    <!-- Chatbox -->
+    <div class="chatbox-container" id="chatboxContainer">
+        <div class="chatbox-header">Chat with us!</div>
+        <div class="chatbox-body" id="chatbox">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chatbox-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatbox() {
+            const chatbox = document.getElementById('chatboxContainer');
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'flex';
+            } else {
+                chatbox.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            const chatbox = document.getElementById('chatbox');
+
+            if (userInput.trim() === '') return;
+
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('message', 'user-message');
+            userMessage.innerText = userInput;
+            chatbox.appendChild(userMessage);
+
+            fetch('/get', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botResponse = document.createElement('div');
+                botResponse.classList.add('message', 'bot-response');
+                botResponse.innerText = data.response;
+                chatbox.appendChild(botResponse);
+                chatbox.scrollTop = chatbox.scrollHeight;
+                document.getElementById('userInput').value = '';
+            });
+        }
+    </script>
+
+
+    <div class="mainbody">
+      <img src="{{ url_for('static', filename='plane.jpeg') }}" />
+      <div class="hero-overlay">
+      <h1>Welcome to MyAirline</h1>
+      <p>Your journey begins here.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="contact">Contact Us : SkyWay.com</div>
+    </div>
+  </div>
+</body>
+</html>

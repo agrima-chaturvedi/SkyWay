@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='flightDet.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="main">
+  <div class="sidepanel">
+    <div class="menu">
+      <ul>
+        <li><i class="fa-solid fa-house"></i><a href="/">Home</a></li>
+        <li><i class="fa-solid fa-ticket"></i><a href="/book">Book Flight</a></li>
+        <li><i class="fa-solid fa-circle-info"></i><a href="/journey">Journey Details</a></li>
+        <li><i class="fa-solid fa-ban"></i><a href="/cancel">Cancel Ticket</a></li>
+        <li><i class="fa-solid fa-calendar-week"></i><a href="/flight-details">Flight Details</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flight-details">
+    <h2>Flight Schedule</h2>
+    <div class="table-container">
+      <table class="flight-table">
+        <thead>
+          <tr>
+            <th>Airline</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Route</th>
+            <th>Dep_Time</th>
+            <th>Arrival_Time</th>
+            <th>Duration</th>
+            <th>Total_Stop</th>
+            <th>Additional</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for flight in flights %}
+        <tr>
+            <td>{{ flight[1] }}</td>  <!-- Assuming 'airline' is in the second column -->
+            <td>{{ flight[2] }}</td>  <!-- 'source_city' -->
+            <td>{{ flight[3] }}</td>  <!-- 'destination_city' -->
+            <td>{{ flight[4] }}</td>  <!-- 'route' -->
+            <td>{{ flight[5] }}</td>  <!-- 'departure_time' -->
+            <td>{{ flight[6] }}</td>  <!-- 'arrival_time' -->
+            <td>{{ flight[7] }}</td>  <!-- 'duration' -->
+            <td>{{ flight[8] }}</td>  <!-- 'total_stops' -->
+            <td>{{ flight[9] }}</td>  <!-- 'additional_info' -->
+            <td>{{ flight[10] }}</td> <!-- 'price' -->
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

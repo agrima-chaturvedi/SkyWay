@@ -1,0 +1,101 @@
+<!-- Book.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Flight</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="airways">SkyWay</div>
+        </div>
+    <div class="main">
+        <div class="sidepanel">
+            <div class="menu">
+                <ul>
+                    <li><i class="fa-solid fa-house"></i><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><i class="fa-solid fa-ticket"></i><a href="{{ url_for('book') }}">Book Flight</a></li>
+                    <li><i class="fa-solid fa-circle-info"></i><a href="{{ url_for('journey') }}">Journey Details</a></li>
+                    <li><i class="fa-solid fa-ban"></i><a href="{{ url_for('cancel') }}">Cancel Ticket</a></li>
+                    <li><i class="fa-solid fa-calendar-week"></i><a href="#">Flight Details</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="book">
+            <form class="formbook" action="{{ url_for('book') }}" method="POST">
+                <h2>Book your Flight</h2>
+                <div class="grp">
+                    <label for="Name">Passenger Name:</label>
+                    <input type="text" id="Name" name="Name" required>
+                </div>
+                <div class="grp">
+                    <label for="DOB">DOB:</label>
+                    <input type="date" id="DOB" name="DOB" required>
+                </div>
+                <div class="grp">
+                    <label for="source">Journey From:</label>
+                    <input type="text" id="source" name="source" required>
+                </div>
+                <div class="grp">
+                    <label for="destination">Journey To:</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <button type="submit">Search Flight</button>
+            </form>
+
+            {% if flights %}
+            <h3>Available Flights</h3>
+            <div class="flight-table-container">
+            <table border="1" cellpadding="10">
+                <tr>
+                    <th>Airline</th>
+                    <th>Route</th>
+                    <th>Dep Time</th>
+                    <th>Arrival Time</th>
+                    <th>Duration</th>
+                    <th>Stops</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                {% for flight in flights %}
+                <tr>
+                    <form action="{{ url_for('confirm_booking') }}" method="POST">
+                        <input type="hidden" name="name" value="{{ request.form['Name'] }}">
+                        <input type="hidden" name="dob" value="{{ request.form['DOB'] }}">
+                        <input type="hidden" name="route" value="{{ flight['Route'] | string | replace('->', '→') | replace('-->', '→') | replace('-', '→') | replace(' to ', '→') }}">
+
+                        <td>{{ flight['Airline'] }}<input type="hidden" name="airline" value="{{ flight['Airline'] }}"></td>
+                        
+                        <td>{{ flight['Route'] | string | replace('->', '→') | replace('-->', '→') | replace('-', '→') | replace(' to ', '→') }}</td>
+
+                        <td>{{ flight['Dep_Time'] }}<input type="hidden" name="dep_time" value="{{ flight['Dep_Time'] }}"></td>
+                        <td>{{ flight['Arrival_Time'] }}<input type="hidden" name="arr_time" value="{{ flight['Arrival_Time'] }}"></td>
+                        <td>{{ flight['Duration'] }}<input type="hidden" name="duration" value="{{ flight['Duration'] }}"></td>
+                        <td>{{ flight['Total_Stops'] }}<input type="hidden" name="stops" value="{{ flight['Total_Stops'] }}"></td>
+                        <td>₹{{ flight['Price'] }}<input type="hidden" name="price" value="{{ flight['Price'] }}"></td>
+                        <td><button type="submit">Book Now</button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        </div>
+    </div>
+</body>
+</html>

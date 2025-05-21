@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+</head>
+<body>
+  <div class="header">
+    <div class="airways">SkyWay</div>
+    </div>
+    <div class="main">
+        <div class="sidepanel">
+         <div class="menu">
+             <ul>
+              <li><i class="fa-solid fa-house"></i><a href="{{ url_for('home') }}">Home</a></li>
+              <li><i class="fa-solid fa-ticket"></i><a href="{{ url_for('book') }}">Book Flight</a></li>
+              <li><i class="fa-solid fa-circle-info"></i><a href="{{ url_for('journey') }}">Journey Details</a></li>
+              <li><i class="fa-solid fa-ban"></i><a href="{{ url_for('cancel') }}">Cancel Ticket</a></li>
+              <li><i class="fa-solid fa-calendar-week"></i><a href="#">Flight Details</a></li>
+              </ul>
+          </div>
+        </div>
+        <div class="cancel">
+            <form class="cancelbook" action="{{ url_for('cancel')}}" method="POST">
+                <h2>Cancel your ticket</h2>
+                <div class="grp">
+                   <label for="pnr">PNR Number:</label>
+                   <input type="text" id="pnr" name="pnr" required>
+                </div>
+               
+                <div class="grp">
+                   <label for="name">Passenger Name:</label>
+                   <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="grp">
+                    <label for="reason">Reason for Cancellation:</label>
+                    <input type="text" id="reason" name="reason" required>
+                 </div>
+                  
+                
+                <button type="submit">Proceed</button>
+               </form>
+        </div>
+    </div>
+    
+</body>
+</html>
